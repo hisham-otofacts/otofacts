@@ -13,8 +13,10 @@ export const env = createEnv({
    * Server side Environment variables, not available on the client.
    */
   server: {
-    DRIZZLE_DATABASE_URL: z.string().url(),
+    API_SECRET: z.string(),
     CLERK_SECRET_KEY: z.string(),
+    CRON_SECRET: z.string(),
+    DRIZZLE_DATABASE_URL: z.string().url(),
   },
   runtimeEnv: { ...process.env },
 });
