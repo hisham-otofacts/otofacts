@@ -1,0 +1,46 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - '**/*' # This will run the workflow on all branches
+
+permissions:
+  contents: read # This is required for actions/checkout
+  id-token: write # This is required for requesting the JWT
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout application
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.1
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.0
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint application
+        run: |
+          pnpm format:check
+
+      - name: Build application
+        run: pnpm build
+
+      - name: Deploy application
+        if: github.ref == 'refs/heads/main'
+        env:
+          DRIZZLE_DATABASE_URL: ${{ secrets.DRIZZLE_DATABASE_URL }}
+        run: |
+          pnpm drizzle-kit push:pg
+          pnpm vercel deploy --prebuilt --prod --yes --token ${{ secrets.OTOFACTS_VERCEL_TOKEN }}
