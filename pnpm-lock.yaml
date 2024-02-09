@@ -44,6 +44,9 @@ dependencies:
   htmx.org:
     specifier: 1.9.10
     version: 1.9.10
+  minimatch:
+    specifier: 9.0.3
+    version: 9.0.3
   tailwindcss:
     specifier: 3.4.1
     version: 3.4.1
