@@ -1,4 +1,10 @@
 {
+  "crons": [
+    {
+      "path": "/api/v1/crons/reports/daily",
+      "schedule": "0 * 0 ? * * *"
+    }
+  ],
   "git": {
     "deploymentEnabled": {
       "main": false
