@@ -1,1 +1,3 @@
-export async function getLayoutContext(request: Request) {}
+export async function getLayoutContext(request: Request) {
+  console.log(request.method);
+}

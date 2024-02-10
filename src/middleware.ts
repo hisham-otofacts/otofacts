@@ -1,5 +1,5 @@
 import clerkClient from '@clerk/clerk-sdk-node';
-import { env } from '@env';
+import { env } from '@environment';
 import { API_URLS, COUNTRY_CONFIGS, PROTECTED_PAGE_URLS } from '@lib/constants';
 import type { MiddlewareHandler } from 'astro';
 import { sequence } from 'astro/middleware';
@@ -11,7 +11,7 @@ import { minimatch } from 'minimatch';
  * @param next
  * @returns
  */
-export const authApi: MiddlewareHandler = async ({ request, redirect }, next) => {
+export const authApi: MiddlewareHandler = async ({ request }, next) => {
   const url = new URL(request.url);
 
   // Check if the API is protected. If not, continue to the next middleware.
