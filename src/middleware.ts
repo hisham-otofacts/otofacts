@@ -77,11 +77,11 @@ export const localContext: MiddlewareHandler = async ({ request, redirect, local
   const country = countryCode ? COUNTRY_CONFIGS[countryCode] : undefined;
 
   // Redirect to the default country if the country configuration is not found
-  if (country) {
+  if (!country) {
     return redirect('/my/');
   }
 
-  // Set country to the locals object
+  // Set country to the locals context (per-request scope)
   locals.country = country;
 
   return next();
