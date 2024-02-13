@@ -30,6 +30,10 @@ const { title } = Astro.props;
   <body class="antialiased text-default bg-page tracking-tight">
     <slot />
 
+    <script>
+      import 'htmx.org';
+    </script>
+
     <script
       async
       crossorigin="anonymous"
@@ -39,8 +43,6 @@ const { title } = Astro.props;
       type="text/javascript"></script>
 
     <script is:inline define:vars={{ defaultTheme: UI.theme }}>
-      import 'htmx.org';
-
       if (window.basic_script) {
         return;
       }
