@@ -51,12 +51,17 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.enableFiletypes": ["mdx"],
-  "css.customData": ["./vscode.tailwind.json"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "prettier.configPath": ".prettierrc",
   "prettier.documentSelectors": ["**/*.astro"],
   "prettier.useEditorConfig": false
