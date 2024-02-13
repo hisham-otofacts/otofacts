@@ -9,19 +9,10 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   adapter: vercel(),
   integrations: [
-    alpine({ entrypoint: '/src/entrypoint' }),
-    compress({
-      CSS: true,
-      HTML: {
-        'html-minifier-terser': {
-          removeAttributeQuotes: false,
-        },
-      },
-      Image: false,
-      JavaScript: true,
-      SVG: false,
-      Logger: 1,
+    alpine({
+      entrypoint: '/src/entrypoint',
     }),
+    compress(),
     icon({
       include: {
         tabler: ['*'],
@@ -38,7 +29,9 @@ export default defineConfig({
         ],
       },
     }),
-    tailwind({ applyBaseStyles: false }),
+    tailwind({
+      applyBaseStyles: false,
+    }),
   ],
   output: 'server',
 });
