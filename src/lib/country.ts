@@ -1,8 +1,8 @@
-export interface CountryConfig {
+export type CountryConfig = {
   name: string;
   currency: string;
   language: string;
-}
+};
 
 export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
   my: {
@@ -21,7 +21,3 @@ export const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     language: 'en',
   },
 } as const;
-
-export const API_URLS = ['/api/**'] as const;
-
-export const PROTECTED_PAGE_URLS = ['/*/dashboard/**'] as const;

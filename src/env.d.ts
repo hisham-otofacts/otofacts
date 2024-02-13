@@ -2,7 +2,8 @@
 
 declare namespace App {
   interface Locals {
-    country: import('@lib/constants').CountryConfig;
+    country: import('@lib/country').CountryConfig;
+    session: import('@lib/session').Session;
   }
 }
 

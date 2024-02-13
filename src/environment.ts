@@ -15,8 +15,12 @@ export const env = createEnv({
   server: {
     API_SECRET: z.string(),
     CLERK_SECRET_KEY: z.string(),
+    COOKIE_DOMAIN: z.string().optional(),
     CRON_SECRET: z.string(),
     DRIZZLE_DATABASE_URL: z.string().url(),
+    SESSION_NAMESPACE: z.string(),
+    UPSTASH_REDIS_URL: z.string().url(),
+    UPSTASH_REDIS_TOKEN: z.string(),
   },
   runtimeEnv: { ...process.env },
 });
