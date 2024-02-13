@@ -1,9 +1,8 @@
 ---
 import db from '@lib/db/index';
+export const partial = true;
 
 const users = await db.query.user.findMany();
-
-export const partial = true;
 ---
 
 {

@@ -1,4 +1,6 @@
 ---
+import '@assets/styles/tailwind.css';
+
 import { ViewTransitions } from 'astro:transitions';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import { env } from '@environment';
@@ -11,7 +13,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="2xl:text-[20px]">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -22,8 +24,9 @@ const { title } = Astro.props;
     <ViewTransitions />
     <SpeedInsights />
   </head>
-  <body>
+  <body class="antialiased text-default bg-page tracking-tight">
     <slot />
+
     <script>
       import 'htmx.org';
     </script>
@@ -34,28 +37,10 @@ const { title } = Astro.props;
       onload="window.Clerk.load()"
       src="https://top-moccasin-15.clerk.accounts.dev/npm/@clerk/clerk-js@4/dist/clerk.browser.js"
       type="text/javascript"></script>
+
     <style is:global>
-      :root {
-        --accent: 136, 58, 234;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
-      }
-      html {
-        font-family: system-ui, sans-serif;
-        background: #13151a;
-        background-size: 224px;
-      }
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
+      img {
+        content-visibility: auto;
       }
     </style>
   </body>

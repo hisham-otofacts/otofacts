@@ -1,0 +1,12 @@
+---
+import Layout from '@layouts/PageLayout.astro';
+
+const { country } = Astro.locals;
+---
+
+<Layout title={'Home'}>
+  <h2>Home</h2>
+
+  <div hx-get={`/partials/${country.code}/users`} hx-trigger="click" hx-target="#users">Get Users</div>
+  <div id="users"></div>
+</Layout>

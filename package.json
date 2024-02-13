@@ -15,9 +15,7 @@
   },
   "dependencies": {
     "@alpinejs/intersect": "3.13.5",
-    "@astrojs/alpinejs": "0.4.0",
     "@astrojs/check": "0.4.1",
-    "@astrojs/tailwind": "5.1.0",
     "@astrojs/vercel": "7.1.1",
     "@clerk/clerk-sdk-node": "4.13.8",
     "@growthbook/growthbook": "0.33.0",
@@ -32,17 +30,20 @@
     "drizzle-orm": "0.29.3",
     "htmx.org": "1.9.10",
     "minimatch": "9.0.3",
-    "tailwindcss": "3.4.1",
-    "typescript": "5.3.3",
     "uuid": "9.0.1",
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "@astrojs/alpinejs": "0.4.0",
+    "@astrojs/tailwind": "5.1.0",
     "@astrojs/ts-plugin": "1.4.0",
+    "@iconify-json/tabler": "1.1.105",
+    "@tailwindcss/typography": "0.5.10",
     "@types/alpinejs": "3.13.6",
     "@types/alpinejs__intersect": "3.13.3",
     "@types/node": "20.11.0",
     "@types/uuid": "9.0.8",
+    "astro-compress": "2.2.10",
     "dotenv-cli": "7.3.0",
     "drizzle-kit": "0.20.14",
     "pg": "8.11.3",
@@ -52,6 +53,9 @@
     "prettier-plugin-organize-imports": "3.2.4",
     "prettier-plugin-sort-json": "3.1.0",
     "rimraf": "5.0.5",
+    "tailwind-merge": "2.2.1",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3",
     "vercel": "33.4.1"
   },
   "engines": {
