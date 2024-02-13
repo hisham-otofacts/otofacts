@@ -1,5 +1,5 @@
 import { env } from '@environment';
-import { API_URLS } from '@lib/urls';
+import { API_URLS } from '@lib/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 

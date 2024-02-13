@@ -5,6 +5,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro check && astro build",
+    "check": "pnpm format:check && pnpm build",
     "clean": "rimraf .vercel",
     "clean:deep": "pnpm clean && rimraf node_modules",
     "db:push": "dotenv pnpm drizzle-kit push:pg",

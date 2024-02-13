@@ -1,4 +1,5 @@
-import { COUNTRY_CONFIGS, type CountryConfig } from './country';
+import type { CountryConfig } from '@lib/types';
+import { COUNTRY_CONFIGS } from './country';
 
 export const headerData = (country: CountryConfig) => ({
   links: [

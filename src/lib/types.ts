@@ -1,15 +1,14 @@
-import type { HTMLAttributes, HTMLTag } from 'astro/types';
-
-export interface MetaData {
-  title?: string;
-  canonical?: string;
-  description?: string;
+export interface CountryConfig {
+  code: string;
+  name: string;
+  currency: string;
+  language: string;
 }
 
-export interface CallToAction extends HTMLAttributes<HTMLTag> {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
-  text?: string;
-  icon?: string;
-  classes?: Record<string, string>;
-  type?: 'button' | 'submit' | 'reset';
+export interface HeadProps {
+  title: string;
+}
+
+export interface Session {
+  id: string;
 }

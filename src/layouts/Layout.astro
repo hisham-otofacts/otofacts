@@ -1,33 +1,23 @@
 ---
-import '@assets/styles/tailwind.css';
-
-import { ViewTransitions } from 'astro:transitions';
-import SpeedInsights from '@vercel/speed-insights/astro';
+import '@assets/styles/base.css';
+import BaseHead from '@components/BaseHead.astro';
 import { env } from '@environment';
+import Navigation from '@components/global/Navigation.astro';
+import type { HeadProps } from '@lib/types';
 
-interface Props {
-  title: string;
-}
+interface Props extends HeadProps {}
 
-const UI = {
-  theme: 'system',
-};
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="2xl:text-[20px]">
+<html lang="en" class="no-touchevents hydrated scroll-smooth selection:bg-accent-500 selection:text-white">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
-    <SpeedInsights />
+    <BaseHead {title} />
   </head>
-  <body class="bg-page tracking-tight text-default antialiased">
+  <body class="bg-white">
+    <Navigation />
+
     <slot />
 
     <script>
@@ -41,149 +31,5 @@ const { title } = Astro.props;
       onload="window.Clerk.load()"
       src="https://top-moccasin-15.clerk.accounts.dev/npm/@clerk/clerk-js@4/dist/clerk.browser.js"
       type="text/javascript"></script>
-
-    <script is:inline define:vars={{ defaultTheme: UI.theme }}>
-      if (window.basic_script) {
-        return;
-      }
-
-      window.basic_script = true;
-
-      function applyTheme(theme) {
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      }
-
-      const initTheme = function () {
-        if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
-          applyTheme(defaultTheme.replace(':only', ''));
-        } else if (
-          localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-          applyTheme('dark');
-        } else {
-          applyTheme('light');
-        }
-      };
-      initTheme();
-
-      function attachEvent(selector, event, fn) {
-        const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
-        if (matches && matches.length) {
-          matches.forEach((elem) => {
-            elem.addEventListener(event, (e) => fn(e, elem), false);
-          });
-        }
-      }
-
-      const onLoad = function () {
-        let lastKnownScrollPosition = window.scrollY;
-        let ticking = true;
-
-        attachEvent('#header nav', 'click', function () {
-          document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-          document.body.classList.remove('overflow-hidden');
-          document.getElementById('header')?.classList.remove('h-screen');
-          document.getElementById('header')?.classList.remove('expanded');
-          document.getElementById('header')?.classList.remove('bg-page');
-          document.querySelector('#header nav')?.classList.add('hidden');
-          document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
-        });
-
-        attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
-          if (defaultTheme.endsWith(':only')) {
-            return;
-          }
-          document.documentElement.classList.toggle('dark');
-          localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        });
-
-        let screenSize = window.matchMedia('(max-width: 767px)');
-        screenSize.addEventListener('change', function () {
-          document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-          document.body.classList.remove('overflow-hidden');
-          document.getElementById('header')?.classList.remove('h-screen');
-          document.getElementById('header')?.classList.remove('expanded');
-          document.getElementById('header')?.classList.remove('bg-page');
-          document.querySelector('#header nav')?.classList.add('hidden');
-          document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
-        });
-
-        function appyHeaderStylesOnScroll() {
-          const header = document.querySelector('#header[data-aw-sticky-header]');
-          if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
-            document.getElementById('header').classList.add('scroll');
-          } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
-            document.getElementById('header').classList.remove('scroll');
-          }
-          ticking = false;
-        }
-        appyHeaderStylesOnScroll();
-
-        attachEvent([document], 'scroll', function () {
-          lastKnownScrollPosition = window.scrollY;
-
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
-              appyHeaderStylesOnScroll();
-            });
-            ticking = true;
-          }
-        });
-      };
-
-      const onPageShow = function () {
-        document.documentElement.classList.add('motion-safe:scroll-smooth');
-        const elem = document.querySelector('[data-aw-toggle-menu]');
-        if (elem) {
-          elem.classList.remove('expanded');
-        }
-        document.body.classList.remove('overflow-hidden');
-        document.getElementById('header')?.classList.remove('h-screen');
-        document.getElementById('header')?.classList.remove('expanded');
-        document.querySelector('#header nav')?.classList.add('hidden');
-      };
-
-      window.onload = onLoad;
-      window.onpageshow = onPageShow;
-
-      document.addEventListener('astro:after-swap', () => {
-        initTheme();
-        onLoad();
-        onPageShow();
-      });
-    </script>
-
-    <style is:global>
-      :root {
-        --accent: 136, 58, 234;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
-      }
-      html {
-        font-family: system-ui, sans-serif;
-        background: #13151a;
-        background-size: 224px;
-      }
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-      }
-      img {
-        content-visibility: auto;
-      }
-    </style>
   </body>
 </html>

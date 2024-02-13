@@ -1,7 +1,7 @@
 import { env } from '@environment';
 import redis from '@lib/cache/index';
-import type { Session } from '@lib/session';
-import { API_URLS } from '@lib/urls';
+import { API_URLS } from '@lib/constants/urls';
+import type { Session } from '@lib/types';
 import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 import { v5 as uuidv5 } from 'uuid';
@@ -15,7 +15,7 @@ import { v5 as uuidv5 } from 'uuid';
 export const middleware: MiddlewareHandler = async ({ cookies, request, locals }, next) => {
   const url = new URL(request.url);
 
-  // Check if it's a non-API route. If it's an API route, continue to the next middleware.
+  // If it's an API route, continue to the next middleware.
   if (API_URLS.some((path) => minimatch(url.pathname, path))) {
     return next();
   }

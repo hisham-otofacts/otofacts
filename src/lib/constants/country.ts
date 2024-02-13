@@ -1,9 +1,4 @@
-export type CountryConfig = {
-  code: string;
-  name: string;
-  currency: string;
-  language: string;
-};
+import type { CountryConfig } from '@lib/types';
 
 export const COUNTRY_CONFIGS: Readonly<CountryConfig[]> = [
   {

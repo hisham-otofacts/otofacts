@@ -1,6 +1,6 @@
 import clerkClient from '@clerk/clerk-sdk-node';
 import { env } from '@environment';
-import { PROTECTED_PAGE_URLS } from '@lib/urls';
+import { PROTECTED_PAGE_URLS } from '@lib/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 
@@ -14,10 +14,6 @@ export const middleware: MiddlewareHandler = async ({ request, redirect, locals 
   const url = new URL(request.url);
 
   // Check if the page is protected. If not, continue to the next middleware.
-  console.log(
-    url.pathname,
-    PROTECTED_PAGE_URLS.some((path) => minimatch(url.pathname, path)),
-  );
   if (!PROTECTED_PAGE_URLS.some((path) => minimatch(url.pathname, path))) {
     return next();
   }
