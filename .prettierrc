@@ -8,7 +8,12 @@
       }
     }
   ],
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-organize-imports", "prettier-plugin-sort-json"],
+  "plugins": [
+    "prettier-plugin-astro",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-sort-json",
+    "prettier-plugin-tailwindcss"
+  ],
   "printWidth": 120,
   "singleQuote": true
 }
