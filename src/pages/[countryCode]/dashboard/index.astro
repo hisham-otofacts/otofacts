@@ -1,7 +1,9 @@
 ---
 import Layout from '@layouts/PageLayout.astro';
+
+const { country } = Astro.locals;
 ---
 
 <Layout title={'Dashboard'}>
-  <h2>Dashboard</h2>
+  <h2>Dashboard {country.name}</h2>
 </Layout>
