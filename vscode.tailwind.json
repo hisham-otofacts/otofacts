@@ -1,17 +1,17 @@
 {
-  "version": 1.1,
   "atDirectives": [
     {
-      "name": "@tailwind",
-      "description": "@tailwind tailwindcss"
+      "description": "@tailwind tailwindcss",
+      "name": "@tailwind"
     },
     {
-      "name": "@layer",
-      "description": "@layer tailwindcss"
+      "description": "@layer tailwindcss",
+      "name": "@layer"
     },
     {
-      "name": "@apply",
-      "description": "@apply tailwindcss"
+      "description": "@apply tailwindcss",
+      "name": "@apply"
     }
-  ]
+  ],
+  "version": 1.1
 }
