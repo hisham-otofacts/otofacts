@@ -37,6 +37,7 @@ export const testimonial = pgTable('testimonials', {
   id: serial('id'),
   name: varchar('name', { length: 256 }),
   title: varchar('title', { length: 256 }),
+  message: text('message'),
   quote: text('quote'),
   imageSrc: text('image_src'),
   createdAt: timestamp('created_at').defaultNow(),
