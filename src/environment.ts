@@ -22,5 +22,5 @@ export const env = createEnv({
     UPSTASH_REDIS_URL: z.string().url(),
     UPSTASH_REDIS_TOKEN: z.string(),
   },
-  runtimeEnv: { ...process.env },
+  runtimeEnv: { ...process.env, PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.VITE_CLERK_PUBLISHABLE_KEY },
 });

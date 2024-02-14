@@ -1,5 +1,4 @@
 import Clerk from '@clerk/clerk-js';
-
 import { atom } from 'nanostores';
 
 export const auth = atom<Clerk | null>(null);
@@ -9,7 +8,7 @@ export const initializeClerk = () => {
   const authNano = auth.get();
   if (authNano) return;
 
-  clerk = new Clerk(import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY ?? process.env.PUBLIC_CLERK_PUBLISHABLE_KEY);
+  clerk = new Clerk(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY ?? import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY);
   clerk
     .load()
     .then(() => {
