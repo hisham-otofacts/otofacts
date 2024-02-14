@@ -16,6 +16,18 @@ Install dependencies:
 pnpm i
 ```
 
+Link your workspace to vercel:
+
+```bash
+pnpm vercel link
+```
+
+Pull down the localdev environment variables (writes to `/.env`):
+
+```bash
+pnpm vercel env pull
+```
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
