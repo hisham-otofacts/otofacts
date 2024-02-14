@@ -3,7 +3,8 @@ import type { APIRoute } from 'astro';
 
 const logger = namedLogger('queues-todo-create');
 
-export const GET: APIRoute = async () => {
-  logger.info('Processing create todo queue job');
-  return new Response(JSON.stringify({ status: 'ok' }));
+export const GET: APIRoute = async ({ request }) => {
+  const data = await request.json();
+  logger.info('Processing create todo queue job', data);
+  return new Response(JSON.stringify({ status: 'ok', data }));
 };
