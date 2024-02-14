@@ -3,6 +3,7 @@ import { isPageRoute } from '@libs/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 
 /**
+ * Sets common local variables (per-request scope) for page routes.
  *
  * @param context
  * @param next
