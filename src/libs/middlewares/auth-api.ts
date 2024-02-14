@@ -1,6 +1,6 @@
 import { env } from '@environment';
-import { receiver } from '@lib/clients/queue';
-import { isApiRoute } from '@lib/constants/urls';
+import { receiver } from '@libs/clients/queue';
+import { isApiRoute } from '@libs/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 
 /**

@@ -1,7 +1,7 @@
 import { env } from '@environment';
-import cache from '@lib/clients/cache';
-import { isHtmlPageRoute } from '@lib/constants/urls';
-import type { Session } from '@lib/types';
+import cache from '@libs/clients/cache';
+import { isHtmlPageRoute } from '@libs/constants/urls';
+import type { Session } from '@libs/types';
 import type { MiddlewareHandler } from 'astro';
 import { v5 as uuidv5 } from 'uuid';
 

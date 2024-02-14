@@ -1,0 +1,40 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Footer from '@components/global/Footer.astro';
+import { publisher } from '@libs/clients/queue';
+
+if (Astro.request.method === 'POST') {
+  const data = await Astro.request.formData();
+  const body = { name: data.get('name') };
+
+  await publisher.publishJSON({ topic: 'todos-create', body });
+}
+---
+
+<Layout title="Pricing">
+  <section>
+    <div class="mx-auto w-full max-w-7xl items-center px-8 py-24 md:px-12 lg:px-24">
+      <form method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
+        <div class="mb-4">
+          <label class="mb-2 block text-sm font-bold text-gray-700" for="name">Task</label>
+          <input
+            class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Some Task"
+            required
+            minlength="2"
+          />
+        </div>
+        <div class="flex items-center justify-between">
+          <button
+            class="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+            type="submit">Add</button
+          >
+        </div>
+      </form>
+    </div>
+  </section>
+  <Footer />
+</Layout>

@@ -1,7 +1,7 @@
 <div id="auth-user-button" class="hidden"></div>
 
 <script>
-  import { auth } from '../../lib/stores/auth';
+  import { auth } from '../../libs/stores/auth';
 
   auth.subscribe((clerk) => {
     if (clerk?.isReady()) {

@@ -1,5 +1,5 @@
 ---
-import database from '@lib/clients/database';
+import database from '@libs/clients/database';
 export const partial = true;
 
 const testimonials = await database.query.testimonial.findMany();

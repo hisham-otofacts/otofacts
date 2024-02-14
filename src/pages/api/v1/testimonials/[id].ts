@@ -1,4 +1,4 @@
-import database from '@lib/clients/database';
+import database from '@libs/clients/database';
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ params }) => {

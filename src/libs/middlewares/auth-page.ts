@@ -1,5 +1,5 @@
-import auth from '@lib/clients/auth';
-import { isHtmlPageRoute, PROTECTED_PAGE_URLS } from '@lib/constants/urls';
+import auth from '@libs/clients/auth';
+import { isHtmlPageRoute, PROTECTED_PAGE_URLS } from '@libs/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 

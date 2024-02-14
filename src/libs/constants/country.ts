@@ -1,4 +1,4 @@
-import type { CountryConfig } from '@lib/types';
+import type { CountryConfig } from '@libs/types';
 
 export const COUNTRY_CONFIGS: Readonly<CountryConfig[]> = [
   {

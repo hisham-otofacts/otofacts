@@ -32,3 +32,10 @@ export const testimonial = pgTable('testimonials', {
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
+
+export const todo = pgTable('todo', {
+  id: serial('id'),
+  name: text('name'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});

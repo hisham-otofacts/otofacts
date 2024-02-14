@@ -3,10 +3,10 @@
 
 declare namespace App {
   interface Locals {
-    country: import('@lib/constants/country').CountryConfig;
+    country: import('@libs/constants/country').CountryConfig;
     isSignedIn?: boolean;
     pageURL: import('node:url').URL;
-    session: import('@lib/session').Session;
+    session: import('@libs/session').Session;
     user?: import('@clerk/clerk-sdk-node').User;
   }
 }

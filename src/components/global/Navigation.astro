@@ -58,6 +58,13 @@ const { country } = Astro.locals;
           Faq</a
         >
 
+        <a
+          class="px-2 py-2 text-sm font-medium text-black hover:text-accent-400 md:px-3 lg:px-6"
+          href={`/${country.code}/todos/`}
+        >
+          Todos</a
+        >
+
         <div class="inline-flex list-none items-center gap-2 lg:ml-auto">
           <UserButton />
           <SignInButton />

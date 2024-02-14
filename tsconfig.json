@@ -5,7 +5,7 @@
       "@components/*": ["src/components/*"],
       "@environment": ["src/environment"],
       "@layouts/*": ["src/layouts/*"],
-      "@lib/*": ["src/lib/*"],
+      "@libs/*": ["src/libs/*"],
       "@pages/*": ["src/pages/*"],
       "@public/*": ["public/*"]
     },

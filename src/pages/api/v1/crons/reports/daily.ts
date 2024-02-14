@@ -1,4 +1,4 @@
-import { namedLogger } from '@lib/logger';
+import { namedLogger } from '@libs/logger';
 import type { APIRoute } from 'astro';
 
 const logger = namedLogger('crons-reports-daily');

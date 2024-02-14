@@ -1,4 +1,4 @@
-import type { CountryConfig } from '@lib/types';
+import type { CountryConfig } from '@libs/types';
 import { COUNTRY_CONFIGS } from './country';
 
 export const headerData = (country: CountryConfig) => ({

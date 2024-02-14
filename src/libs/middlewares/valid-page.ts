@@ -1,4 +1,4 @@
-import { isHtmlPageRoute, PARTIALS_URLS } from '@lib/constants/urls';
+import { isHtmlPageRoute, PARTIALS_URLS } from '@libs/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 

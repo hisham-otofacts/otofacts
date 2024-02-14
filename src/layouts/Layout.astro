@@ -1,7 +1,7 @@
 ---
 import BaseHead from '@components/BaseHead.astro';
 import Navigation from '@components/global/Navigation.astro';
-import type { HeadProps } from '@lib/types';
+import type { HeadProps } from '@libs/types';
 
 interface Props extends HeadProps {}
 
@@ -20,7 +20,7 @@ const { title } = Astro.props;
 
     <script>
       import htmx from 'htmx.org';
-      import { initializeClerk } from '../lib/stores/auth';
+      import { initializeClerk } from '../libs/stores/auth';
 
       // After page load, initialize Clerk
       initializeClerk();

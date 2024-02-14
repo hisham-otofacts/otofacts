@@ -1,5 +1,5 @@
-import { COUNTRY_CONFIG_MAP } from '@lib/constants/country';
-import { isPageRoute } from '@lib/constants/urls';
+import { COUNTRY_CONFIG_MAP } from '@libs/constants/country';
+import { isPageRoute } from '@libs/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 
 /**
