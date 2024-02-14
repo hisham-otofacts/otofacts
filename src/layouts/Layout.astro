@@ -1,14 +1,12 @@
 ---
 import '@assets/styles/base.css';
 import BaseHead from '@components/BaseHead.astro';
-import { env } from '@environment';
 import Navigation from '@components/global/Navigation.astro';
 import type { HeadProps } from '@lib/types';
 
 interface Props extends HeadProps {}
 
 const { title } = Astro.props;
-const { pageURL } = Astro.locals;
 ---
 
 <!doctype html>
