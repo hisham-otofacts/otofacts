@@ -1,17 +1,26 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Footer from '@components/global/Footer.astro';
-import { publisher } from '@libs/clients/queue';
+import { env } from '@environment';
 
 if (Astro.request.method === 'POST') {
   const data = await Astro.request.formData();
   const body = { name: data.get('name') };
 
-  await publisher.publishJSON({ topic: 'todos-create', body });
+  await fetch(`${env.QSTASH_URL}todos-create`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.QSTASH_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  // FIXME: Publisher Not Working
+  // await publisher.publishJSON({ topic: 'todos-create', body });
 }
 ---
 
-<Layout title="Pricing">
+<Layout title="Todos">
   <section>
     <div class="mx-auto w-full max-w-7xl items-center px-8 py-24 md:px-12 lg:px-24">
       <form method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
