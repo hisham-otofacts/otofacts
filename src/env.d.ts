@@ -4,6 +4,8 @@
 declare namespace App {
   interface Locals {
     country: import('@lib/constants/country').CountryConfig;
+    isSignedIn: boolean;
+    pageURL: import('node:url').URL;
     session: import('@lib/session').Session;
   }
 }

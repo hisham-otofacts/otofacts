@@ -1,5 +1,7 @@
 ---
 import logoSvg from '@assets/images/logo.svg';
+import SignInButton from '@components/auth/SignInButton.astro';
+import UserButton from '@components/auth/UserButton.astro';
 
 const { country } = Astro.locals;
 ---
@@ -57,18 +59,8 @@ const { country } = Astro.locals;
         >
 
         <div class="inline-flex list-none items-center gap-2 lg:ml-auto">
-          <a
-            href={`/${country.code}/signup/`}
-            class="focus:shadow-outline mt-2 block px-4 py-2 text-sm font-medium text-black hover:text-accent-400 focus:outline-none md:mt-0"
-          >
-            Sign up
-          </a>
-          <a
-            href={`/${country.code}/login/`}
-            class="group inline-flex h-8 items-center justify-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:bg-gray-200 active:text-accent-400"
-          >
-            Log in
-          </a>
+          <UserButton />
+          <SignInButton />
         </div>
       </nav>
     </div>

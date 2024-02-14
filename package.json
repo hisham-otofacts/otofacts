@@ -18,6 +18,8 @@
     "@alpinejs/intersect": "3.13.5",
     "@astrojs/check": "0.4.1",
     "@astrojs/vercel": "7.1.1",
+    "@clerk/clerk-js": "4.70.0",
+    "@clerk/clerk-react": "4.30.5",
     "@clerk/clerk-sdk-node": "4.13.8",
     "@growthbook/growthbook": "0.33.0",
     "@neondatabase/serverless": "0.8.1",
@@ -31,6 +33,7 @@
     "drizzle-orm": "0.29.3",
     "htmx.org": "1.9.10",
     "minimatch": "9.0.3",
+    "nanostores": "0.9.5",
     "uuid": "9.0.1",
     "zod": "3.22.4"
   },

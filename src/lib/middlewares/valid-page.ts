@@ -20,7 +20,7 @@ export const middleware: MiddlewareHandler = async ({ request, redirect }, next)
     !API_OR_PARTIAL_URLS.some((path) => minimatch(url.pathname, path)) &&
     !url.pathname.endsWith('/')
   ) {
-    return redirect(`${url.pathname}/`, 301);
+    return redirect(`${url.pathname}/?${url.search}`, 301);
   }
 
   return next();

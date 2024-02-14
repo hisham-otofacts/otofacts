@@ -26,8 +26,9 @@ export const middleware: MiddlewareHandler = async ({ request, redirect, locals,
     return redirect('/my/', 302);
   }
 
-  // Set country into the locals context (per-request scope)
+  // Set country and page URL into the locals context (per-request scope)
   locals.country = country;
+  locals.pageURL = url;
 
   return next();
 };

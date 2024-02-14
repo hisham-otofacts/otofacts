@@ -1,0 +1,29 @@
+<div
+  id="auth-login-button"
+  class="group inline-flex hidden h-8 items-center justify-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:bg-gray-200 active:text-accent-400"
+>
+  Log in
+</div>
+
+<script>
+  import { auth } from '../../lib/auth/store';
+
+  auth.subscribe((clerk) => {
+    if (clerk?.isReady()) {
+      const loginButton = document.querySelector<HTMLDivElement>('#auth-login-button');
+      if (loginButton) {
+        if (!!clerk.user) {
+          loginButton.classList.add('hidden');
+        } else {
+          loginButton.addEventListener('click', () => {
+            clerk.openSignIn({
+              afterSignInUrl: `/`,
+              afterSignUpUrl: `/`,
+            });
+          });
+          loginButton.classList.remove('hidden');
+        }
+      }
+    }
+  });
+</script>

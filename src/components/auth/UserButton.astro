@@ -1,0 +1,21 @@
+<div id="auth-user-button" class="hidden"></div>
+
+<script>
+  import { auth } from '../../lib/auth/store';
+
+  auth.subscribe((clerk) => {
+    if (clerk?.isReady()) {
+      const userButton = document.querySelector<HTMLDivElement>('#auth-user-button');
+      if (userButton) {
+        if (!!clerk.user) {
+          clerk.mountUserButton(userButton, {
+            afterSignOutUrl: '/',
+          });
+          userButton.classList.remove('hidden');
+        } else {
+          userButton.classList.add('hidden');
+        }
+      }
+    }
+  });
+</script>
