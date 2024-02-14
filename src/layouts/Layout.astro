@@ -20,17 +20,15 @@ const { title } = Astro.props;
 
     <script>
       import htmx from 'htmx.org';
+      import { initializeClerk } from '../lib/auth/store';
+
+      // After page load, initialize Clerk
+      initializeClerk();
 
       // After view transition to another page, re-process the body to re-bind htmx attributes
+      // and re-initialize Clerk
       document.addEventListener('astro:after-swap', () => {
         htmx.process(document.body);
-      });
-    </script>
-
-    <script>
-      import { initializeClerk } from '../lib/auth/store';
-      // After page load, initialize Clerk
-      document.addEventListener('astro:page-load', () => {
         initializeClerk();
       });
     </script>
