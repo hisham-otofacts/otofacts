@@ -2,9 +2,29 @@
 import Layout from '@layouts/Layout.astro';
 import FaqInfo from '@components/info/Faq.astro';
 import Footer from '@components/global/Footer.astro';
+
+const { country } = Astro.locals;
 ---
 
 <Layout title="FAQ">
   <FaqInfo />
+  <section class="bg-gray-100">
+    <div class="mx-auto w-full max-w-7xl items-center px-8 py-24 md:px-12 lg:px-24">
+      <div
+        class="mx-auto max-w-2xl md:text-center"
+        hx-get={`/partials/${country.code}/testimonials/`}
+        hx-trigger="click"
+        hx-target="#testimonials"
+      >
+        <h2 class="text-4xl font-extrabold tracking-tight text-black lg:text-5xl">Click to view testimonials!</h2>
+      </div>
+      <ul
+        id="testimonials"
+        role="list"
+        class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3"
+      >
+      </ul>
+    </div>
+  </section>
   <Footer />
 </Layout>

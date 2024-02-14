@@ -3,8 +3,8 @@ import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ params }) => {
   const user = params.id
-    ? await db.query.user.findFirst({
-        where: (users, { eq }) => eq(users.id, Number(params.id)),
+    ? await db.query.testimonial.findFirst({
+        where: (testimonials, { eq }) => eq(testimonials.id, Number(params.id)),
       })
     : undefined;
   if (!user) {
