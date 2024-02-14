@@ -1,8 +1,11 @@
+name: PR Agent
+
 on:
   pull_request:
     types:
       - opened
       - reopened
+      - edited
       - ready_for_review
       - review_requested
 

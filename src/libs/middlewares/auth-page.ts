@@ -4,6 +4,7 @@ import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 
 /**
+ * validate authentication for page routes.
  *
  * @param context
  * @param next

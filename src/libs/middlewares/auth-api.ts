@@ -4,6 +4,7 @@ import { isApiRoute } from '@libs/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 
 /**
+ * Validate authentication for API routes.
  *
  * @param context
  * @param next

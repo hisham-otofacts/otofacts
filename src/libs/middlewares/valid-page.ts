@@ -3,6 +3,7 @@ import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
 
 /**
+ * Validate URL for page routes.
  *
  * @param context
  * @param next

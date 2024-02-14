@@ -6,6 +6,7 @@ import type { MiddlewareHandler } from 'astro';
 import { v5 as uuidv5 } from 'uuid';
 
 /**
+ * Sets session into the locals context (per-request scope) for page routes.
  *
  * @param context
  * @param next
