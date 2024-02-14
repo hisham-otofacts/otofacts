@@ -8,7 +8,7 @@ export const initializeClerk = () => {
   const authNano = auth.get();
   if (authNano) return;
 
-  clerk = new Clerk(import.meta.env.ASTRO_CLERK_PUBLISHABLE_KEY ?? import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY);
+  clerk = new Clerk(import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY);
   clerk
     .load()
     .then(() => {

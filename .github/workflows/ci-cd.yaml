@@ -35,6 +35,8 @@ jobs:
           pnpm format:check
 
       - name: Build application
+        env:
+          PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.PUBLIC_CLERK_PUBLISHABLE_KEY }}
         run: pnpm build
 
       - name: Deploy application
