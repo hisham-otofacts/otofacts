@@ -1,7 +1,6 @@
 import { env } from '@environment';
-import { API_URLS } from '@lib/constants/urls';
+import { isApiRoute } from '@lib/constants/urls';
 import type { MiddlewareHandler } from 'astro';
-import { minimatch } from 'minimatch';
 
 /**
  *
@@ -10,14 +9,13 @@ import { minimatch } from 'minimatch';
  * @returns
  */
 export const middleware: MiddlewareHandler = async ({ request }, next) => {
-  const url = new URL(request.url);
-
-  // Check if the API is protected. If not, continue to the next middleware.
-  if (!API_URLS.some((path) => minimatch(url.pathname, path))) {
+  // If it's not an API route, continue to the next middleware.
+  if (!isApiRoute(request)) {
     return next();
   }
 
   // Check if the request has the correct auth header
+  const url = new URL(request.url);
   const authHeader = request.headers.get('authorization');
   const bearerToken = url.pathname.startsWith('/api/cron/') ? env.CRON_SECRET : env.API_SECRET;
   if (authHeader !== `Bearer ${bearerToken}`) {

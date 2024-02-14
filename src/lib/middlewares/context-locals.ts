@@ -1,7 +1,6 @@
 import { COUNTRY_CONFIG_MAP } from '@lib/constants/country';
-import { API_URLS } from '@lib/constants/urls';
+import { isPageRoute } from '@lib/constants/urls';
 import type { MiddlewareHandler } from 'astro';
-import { minimatch } from 'minimatch';
 
 /**
  *
@@ -10,10 +9,8 @@ import { minimatch } from 'minimatch';
  * @returns
  */
 export const middleware: MiddlewareHandler = async ({ request, redirect, locals, params }, next) => {
-  const url = new URL(request.url);
-
-  // If it's an API route, continue to the next middleware.
-  if (API_URLS.some((path) => minimatch(url.pathname, path))) {
+  // If it's not a page-route, continue to the next middleware.
+  if (!isPageRoute(request)) {
     return next();
   }
 
@@ -28,7 +25,7 @@ export const middleware: MiddlewareHandler = async ({ request, redirect, locals,
 
   // Set country and page URL into the locals context (per-request scope)
   locals.country = country;
-  locals.pageURL = url;
+  locals.pageURL = new URL(request.url);
 
   return next();
 };

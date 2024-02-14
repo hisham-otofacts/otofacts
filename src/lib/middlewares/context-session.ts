@@ -1,9 +1,8 @@
 import { env } from '@environment';
 import redis from '@lib/cache/index';
-import { API_URLS } from '@lib/constants/urls';
+import { isHtmlPageRoute } from '@lib/constants/urls';
 import type { Session } from '@lib/types';
 import type { MiddlewareHandler } from 'astro';
-import { minimatch } from 'minimatch';
 import { v5 as uuidv5 } from 'uuid';
 
 /**
@@ -13,10 +12,8 @@ import { v5 as uuidv5 } from 'uuid';
  * @returns
  */
 export const middleware: MiddlewareHandler = async ({ cookies, request, locals }, next) => {
-  const url = new URL(request.url);
-
-  // If it's an API route, continue to the next middleware.
-  if (API_URLS.some((path) => minimatch(url.pathname, path))) {
+  // If it's not a page-route, continue to the next middleware.
+  if (!isHtmlPageRoute(request)) {
     return next();
   }
 
