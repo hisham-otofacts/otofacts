@@ -1,9 +1,9 @@
-import db from '@lib/db/index';
+import database from '@lib/clients/database';
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ params }) => {
   const user = params.id
-    ? await db.query.testimonial.findFirst({
+    ? await database.query.testimonial.findFirst({
         where: (testimonials, { eq }) => eq(testimonials.id, Number(params.id)),
       })
     : undefined;

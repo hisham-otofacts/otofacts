@@ -1,5 +1,5 @@
 import { env } from '@environment';
-import redis from '@lib/cache/index';
+import cache from '@lib/clients/cache';
 import { isHtmlPageRoute } from '@lib/constants/urls';
 import type { Session } from '@lib/types';
 import type { MiddlewareHandler } from 'astro';
@@ -18,7 +18,7 @@ export const middleware: MiddlewareHandler = async ({ cookies, request, locals }
   }
 
   let sessionId = cookies.get('session')?.value;
-  let session = sessionId ? await redis.get<Session>(`session:${sessionId}`) : null;
+  let session = sessionId ? await cache.get<Session>(`session:${sessionId}`) : null;
   if (!session) {
     sessionId = uuidv5(`session-${Date.now()}`, env.SESSION_NAMESPACE);
     session = { id: sessionId };
@@ -32,7 +32,7 @@ export const middleware: MiddlewareHandler = async ({ cookies, request, locals }
   }
 
   // Reset the session expiration time
-  redis.set(`session:${sessionId}`, session, { ex: 60 * 60 });
+  cache.set(`session:${sessionId}`, session, { ex: 60 * 60 });
 
   // Set session into the locals context (per-request scope)
   locals.session = session;

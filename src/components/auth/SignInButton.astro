@@ -6,7 +6,7 @@
 </div>
 
 <script>
-  import { auth } from '../../lib/auth/store';
+  import { auth } from '../../lib/stores/auth';
 
   auth.subscribe((clerk) => {
     if (clerk?.isReady()) {

@@ -1,9 +1,9 @@
 import { namedLogger } from '@lib/logger';
 import type { APIRoute } from 'astro';
 
-const logger = namedLogger('crons-reports-daily');
+const logger = namedLogger('queues-todo-create');
 
 export const GET: APIRoute = async () => {
-  logger.info('Processing daily report cron');
+  logger.info('Processing create todo queue job');
   return new Response(JSON.stringify({ status: 'ok' }));
 };

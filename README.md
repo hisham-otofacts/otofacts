@@ -19,13 +19,13 @@ pnpm i
 Link your workspace to vercel:
 
 ```bash
-pnpm vercel link
+pnpm vercel:link
 ```
 
 Pull down the localdev environment variables (writes to `/.env`):
 
 ```bash
-pnpm vercel env pull .env
+pnpm vercel:env
 ```
 
 ## 🚀 Project Structure

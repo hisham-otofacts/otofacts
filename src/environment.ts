@@ -21,6 +21,10 @@ export const env = createEnv({
     SESSION_NAMESPACE: z.string(),
     UPSTASH_REDIS_URL: z.string().url(),
     UPSTASH_REDIS_TOKEN: z.string(),
+    QSTASH_URL: z.string().url(),
+    QSTASH_TOKEN: z.string(),
+    QSTASH_CURRENT_SIGNING_KEY: z.string(),
+    QSTASH_NEXT_SIGNING_KEY: z.string(),
   },
   runtimeEnv: { ...process.env },
 });

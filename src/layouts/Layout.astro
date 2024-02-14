@@ -20,7 +20,7 @@ const { title } = Astro.props;
 
     <script>
       import htmx from 'htmx.org';
-      import { initializeClerk } from '../lib/auth/store';
+      import { initializeClerk } from '../lib/stores/auth';
 
       // After page load, initialize Clerk
       initializeClerk();

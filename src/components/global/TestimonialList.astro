@@ -1,8 +1,8 @@
 ---
-import db from '@lib/db/index';
+import database from '@lib/clients/database';
 export const partial = true;
 
-const testimonials = await db.query.testimonial.findMany();
+const testimonials = await database.query.testimonial.findMany();
 ---
 
 {
@@ -35,3 +35,4 @@ const testimonials = await db.query.testimonial.findMany();
     </li>
   ))
 }
+@lib/clients/index @lib/clients/db @lib/clients/database

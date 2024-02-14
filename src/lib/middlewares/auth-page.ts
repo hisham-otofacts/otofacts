@@ -1,4 +1,4 @@
-import { clerkClient } from '@lib/auth/client';
+import auth from '@lib/clients/auth';
 import { isHtmlPageRoute, PROTECTED_PAGE_URLS } from '@lib/constants/urls';
 import type { MiddlewareHandler } from 'astro';
 import { minimatch } from 'minimatch';
@@ -17,7 +17,7 @@ export const middleware: MiddlewareHandler = async ({ request, redirect, locals 
 
   // Check if the user is signed in
   const url = new URL(request.url);
-  const { toAuth, isSignedIn } = await clerkClient.authenticateRequest({ request });
+  const { toAuth, isSignedIn } = await auth.authenticateRequest({ request });
 
   // Redirect to the login if the user is not signed in and attempts to open a protected page
   if (!isSignedIn && PROTECTED_PAGE_URLS.some((path) => minimatch(url.pathname, path))) {
@@ -26,8 +26,8 @@ export const middleware: MiddlewareHandler = async ({ request, redirect, locals 
 
   // If the user is signed in, set the user data in the locals object (per-request scope)
   if (isSignedIn) {
-    const auth = toAuth();
-    locals.user = await clerkClient.users.getUser(auth!.userId!);
+    const userAuth = toAuth();
+    locals.user = await auth.users.getUser(userAuth.userId);
   }
 
   // Set the isSignedIn flag in the locals object (per-request scope)
