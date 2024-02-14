@@ -32,3 +32,13 @@ export const user = pgTable('user', {
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
+
+export const testimonial = pgTable('testimonials', {
+  id: serial('id'),
+  name: varchar('name', { length: 256 }),
+  title: varchar('title', { length: 256 }),
+  message: text('message'),
+  imageSrc: text('image_src'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
