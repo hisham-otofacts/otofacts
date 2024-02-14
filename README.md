@@ -25,7 +25,7 @@ pnpm vercel link
 Pull down the localdev environment variables (writes to `/.env`):
 
 ```bash
-pnpm vercel env pull
+pnpm vercel env pull .env
 ```
 
 ## 🚀 Project Structure
