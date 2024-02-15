@@ -26,5 +26,5 @@ export const env = createEnv({
     QSTASH_CURRENT_SIGNING_KEY: z.string(),
     QSTASH_NEXT_SIGNING_KEY: z.string(),
   },
-  runtimeEnv: { ...process.env },
+  runtimeEnv: process.env,
 });
